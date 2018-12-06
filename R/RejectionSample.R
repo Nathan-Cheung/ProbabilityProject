@@ -28,9 +28,9 @@ rejectionsample <- function(n,pdf,a,b,C){
       if (v < pdf(u))
         sim_data = c(sim_data,u)
       }
-  }
-
+sim_data
 
 hist(sim_data, probability = TRUE)
 curve(pdf, add = TRUE)
+}
 
