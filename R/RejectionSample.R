@@ -7,6 +7,7 @@
 #' @export
 
 rejectionsample <- function(n,pdf,a,b,C){
+  #browser()
   sim_data <- replicate(10000, {
     u <- runif(1, a, b)
     v <- runif(1, 0, C)
@@ -22,15 +23,16 @@ rejectionsample <- function(n,pdf,a,b,C){
   if (length(sim_data) >= n) {
     sim_data <- sim_data[1:n]
   }else if (length(sim_data) < n){
-    while (length(sim_data) < n)
+    while (length(sim_data) < n){
       u <- runif(1, a, b)
       v <- runif(1, 0, C)
       if (v < pdf(u))
-        sim_data = c(sim_data,u)
+        sim_data = c(sim_data,u)}
       }
-sim_data
 
 hist(sim_data, probability = TRUE)
 curve(pdf, add = TRUE)
+
+sim_data
 }
 
