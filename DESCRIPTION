@@ -9,3 +9,7 @@ The user inputs the n: the number of random samples, pdf: the pdf of the random 
 License: N/A
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
