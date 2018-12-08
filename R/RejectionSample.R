@@ -1,8 +1,11 @@
 #' Rejection Sampling
 #' @description This is a function that peforms rejection sampling from a pdf
-#' @param x A number
-#' @param y A number
-#' @return The sum of \code{x} and \code{y}
+#' @param n The number of samples
+#' @param pdf A function that is the pdf of the random variable that you wish to sample from
+#' @param a a numeric that is the lower bound of the random variable you wish to sample from
+#' @param b a numeric that is the upper bound of the random variable you with to sample from
+#' @param C a numeric that is such that f(x) <= C for all values of x
+#' @return Samples of length n from the given pdf
 #' @examples
 #' @export
 
