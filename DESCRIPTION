@@ -4,8 +4,7 @@ Title: Rejection Sampling
 Version: 0.1.0
 Author: Nathan Cheung
 Maintainer: nathan.cheung@slu.edu
-Description: This package samples from a continuous random variable using rejection sampling.
-The user inputs the n: the number of random samples, pdf: the pdf of the random variable you wish to sample from, a: the lower bound of the random varaible, b: the upper bound of the random variable, and C: a numeric such that f(x)<=C for all values of x
+Description: This package samples from a continuous random variable using rejection sampling. The user inputs the n: the number of random samples, pdf: the pdf of the random variable you wish to sample from, a: the lower bound of the random varaible, b: the upper bound of the random variable, and C: a numeric such that f(x)<=C for all values of x
 License: N/A
 Encoding: UTF-8
 LazyData: true
