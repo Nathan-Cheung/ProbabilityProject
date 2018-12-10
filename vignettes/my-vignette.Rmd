@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+library(ProbabilityProject)
 ```
 
 ## Rejection Sampling
@@ -25,7 +26,6 @@ Rejection Sampling assumes that a random variable, X, has pdf f(x) such that
 Then, we let u=uniform(a,b) and v=uniform(0,C)
   We accept U as a sample from our pdf if v <= f(u)
   We reject U as a sample from our pdf if v > f(u)
-  
 
 ## Description
 rejectionsample takes a random sample of length n of the given pdf
