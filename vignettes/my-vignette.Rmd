@@ -31,13 +31,12 @@ Then, we let u=uniform(a,b) and v=uniform(0,C)
 rejectionsample takes a random sample of length n of the given pdf
 
 ## Usage
-``` {r}
 pdf <- function(x){
  dbeta(x,3,2)
 }
 
 rejectionsample(n, pdf, a, b, C)
-```
+
 ## Arguments
 n     the number of samples
 
@@ -54,9 +53,7 @@ C     a numeric that is such that f(x) <= C for all
 ## Note
 pdf is a function that must be made before running rejectionsample
 
-Use pdf <- function(x){
-    
-    }
+Use pdf <- function(x){   }
     
 Specify the parameters of the random variable in the pdf function (see examples)
 
@@ -67,7 +64,7 @@ pdf <- function(x){
   dbeta(x,3,2)
   }
   
-  rejectionsample(10000, pdf, 0, 1, 2)
+  head(rejectionsample(10000, pdf, 0, 1, 2))
 ```  
   
 2)
@@ -76,5 +73,7 @@ pdf <- function(x){
   dgamma(x,2,1)
   }
   
-  rejectionsample(5000,pdf,0,5,3)
+  head(rejectionsample(5000,pdf,0,5,3))
 ```
+
+Note that in these examples, the first 6 samples are shown. However, rejectionsample will return n number of samples.
