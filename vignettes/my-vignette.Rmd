@@ -14,52 +14,67 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+## Rejection Sampling
+Rejection Sampling assumes that a random variable, X, has pdf f(x) such that 
+  1)f(x) <= C
+  2)There exists a,b such that P(a<=x<=b) = 1
+  
+Then, we let u=uniform(a,b) and v=uniform(0,C)
+  We accept U as a sample from our pdf if v <= f(u)
+  We reject U as a sample from our pdf if v > f(u)
+  
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+## Description
+rejectionsample takes a random sample of length n of the given pdf
 
-## Vignette Info
+## Usage
+``` {r}
+pdf <- function(x){
+ dbeta(x,3,2)
+}
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+rejectionsample(n, pdf, a, b, C)
 ```
+## Arguments
+n     the number of samples
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+pdf   a function that is the pdf of the random             variable you wish to sample from 
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+a     a numeric that is the lower bound of the random
+      variable you wish to sample from
+      
+b     a numeric that is the upper bound of the random       variable you wish to sample from
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+C     a numeric that is such that f(x) <= C for all
+      values of x
 
-## More Examples
+## Note
+pdf is a function that must be made before running rejectionsample
 
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
+Use pdf <- function(x){
+    
+    }
+    
+Specify the parameters of the random variable in the pdf function (see examples)
 
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+## Examples
+1)
+```{r}
+pdf <- function(x){
+  dbeta(x,3,2)
+  }
+  
+  rejectionsample(10000, pdf, 0, 1, 2)
+```  
+  
+2)
+```{r}
+pdf <- function(x){
+  dgamma(x,2,1)
+  }
+  
+  rejectionsample(5000,pdf,0,5,3)
 ```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
