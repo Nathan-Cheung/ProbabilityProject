@@ -1,5 +1,5 @@
 #' Rejection Sampling
-#' @description This is a function that peforms rejection sampling from a pdf
+#' @description This is a function that peforms rejection sampling from a given pdf
 #' @param n The number of samples
 #' @param pdf A function that is the pdf of the random variable that you wish to sample from
 #' @param a a numeric that is the lower bound of the random variable you wish to sample from
